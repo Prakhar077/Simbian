@@ -1,8 +1,9 @@
 "use client"
-import { motion } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import AlertCard from "./AlertCard"
 import { FaCheckCircle } from "react-icons/fa"
 
+// Steps for the "With Simbian" section
 const steps = [
   "Triaged & Reported",
   "Automated Response",
@@ -11,6 +12,9 @@ const steps = [
   "24/7 Coverage"
 ]
 
+// Correctly typed motion.div for HTMLDivElement
+const MotionDiv = motion.div as React.FC<React.HTMLProps<HTMLDivElement> & HTMLMotionProps<"div">>;
+
 export default function SectionWithSimbian() {
   return (
     <section className="py-16 px-4 bg-[#001861]">
@@ -18,7 +22,7 @@ export default function SectionWithSimbian() {
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto">
         {steps.map((step, i) => (
-          <motion.div
+          <MotionDiv
             key={step}
             className="bg-white border rounded-lg p-4 shadow-md text-center w-48"
             initial={{ opacity: 0, y: 20 }}
@@ -26,7 +30,7 @@ export default function SectionWithSimbian() {
             transition={{ delay: i * 0.3 }}
           >
             <p className="text-sm font-medium">{step}</p>
-          </motion.div>
+          </MotionDiv>
         ))}
       </div>
 
